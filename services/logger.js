@@ -41,4 +41,4 @@ console.debug = (...args) => {
   originalConsoleDebug.apply(console, args);
   writeToLogFile('debug', ...args);
 };
-console.log('Logger initialized. Output will be written to console and logs/app.log');
+console.log('Streeam Me Devloper Bloggers.web.id - Logger initialized. Output will be written to console and logs/app.log');

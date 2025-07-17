@@ -1,0 +1,37 @@
+# Cloudflare Worker Configuration for Streeam Me Devloper Bloggers.web.id
+
+name = "streeam-me-devloper-bloggers"
+main = "worker.js"
+compatibility_date = "2025-01-17"
+
+# Environment variables
+[env.production]
+name = "streeam-me-devloper-bloggers"
+
+[env.development]
+name = "streeam-me-devloper-bloggers-dev"
+
+# KV Namespace bindings (for data storage)
+kv_namespaces = [
+  { binding = "STREAM_DATA", id = "stream_data_namespace" },
+  { binding = "USER_DATA", id = "user_data_namespace" },
+  { binding = "VIDEO_DATA", id = "video_data_namespace" }
+]
+
+# D1 Database binding (SQLite replacement)
+[[d1_databases]]
+binding = "DB"
+database_name = "streeam-me-database"
+database_id = "your-database-id"
+
+# Custom domain routing
+[env.production.routes]
+pattern = "bloggers.web.id/*"
+zone_name = "bloggers.web.id"
+
+# Worker settings
+[build]
+command = "npm run build"
+
+[build.upload]
+format = "service-worker"

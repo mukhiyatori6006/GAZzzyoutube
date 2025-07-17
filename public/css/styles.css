@@ -1,5 +1,5 @@
 /*
- * StreamFlow v2.0 - Live Streaming Lewat VPS
+ * Streeam Me Devloper Bloggers.web.id v2.0 - Live Streaming Platform
  * 
  * Custom Features & UI Components
  * Created by: Bang Tutorial

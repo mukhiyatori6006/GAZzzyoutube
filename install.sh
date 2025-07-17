@@ -3,7 +3,7 @@
 set -e
 
 echo "================================"
-echo "   StreamFlow Quick Installer  "
+echo "   Streeam Me Devloper Bloggers.web.id Quick Installer  "
 echo "================================"
 echo
 
@@ -40,8 +40,8 @@ sudo ufw --force enable
 echo "🚀 Installing PM2..."
 sudo npm install -g pm2
 
-echo "▶️ Starting StreamFlow..."
-pm2 start app.js --name streamflow
+echo "▶️ Starting Streeam Me Devloper Bloggers.web.id..."
+pm2 start app.js --name streeam-me-devloper-bloggers
 pm2 save
 
 echo

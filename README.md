@@ -1,8 +1,8 @@
 ![logo](https://github.com/user-attachments/assets/50231124-d546-43cb-9cf4-7a06a1dad5bd)
 
-# StreamFlow v2.0: Fresh From The Oven 🔥
+# Streeam Me Devloper Bloggers.web.id v2.0: Fresh From The Oven 🔥
 
-StreamFlow adalah aplikasi live streaming yang memungkinkan kamu melakukan live streaming ke berbagai platform seperti YouTube, Facebook, dan platform lainnya menggunakan protokol RTMP. Aplikasi ini dapat berjalan di VPS (Virtual Private Server) dan mendukung streaming ke banyak platform secara bersamaan.
+Streeam Me Devloper Bloggers.web.id adalah aplikasi live streaming yang memungkinkan kamu melakukan live streaming ke berbagai platform seperti YouTube, Facebook, dan platform lainnya menggunakan protokol RTMP. Aplikasi ini dapat berjalan di Cloudflare Workers dan mendukung streaming ke banyak platform secara bersamaan.
 
 ![Untitled-2](https://github.com/user-attachments/assets/3d7bb367-a1b2-43a5-839b-b6aa8dd5de90)
 
@@ -69,11 +69,11 @@ Install Git:
 sudo apt install git -y
 ```
 
-### 2. Setup Project StreamFlow
+### 2. Setup Project Streeam Me Devloper Bloggers.web.id
 
 Clone repository:
 ```bash
-git clone https://github.com/bangtutorial/streamflow
+git clone https://github.com/bangtutorial/streeam-me-devloper-bloggers
 ```
 
 Masuk ke direktori project:

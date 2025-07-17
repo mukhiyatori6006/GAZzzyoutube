@@ -26,12 +26,15 @@ function updateSessionSecret() {
     } else if (envContent) {
       envContent += `\nSESSION_SECRET=${newSecret}`;
     } else {
-      envContent = `PORT=7575\nSESSION_SECRET=${newSecret}\n`;    }
-      fs.writeFileSync(envPath, envContent, 'utf8');
+      envContent = `PORT=7575\nSESSION_SECRET=${newSecret}\n`;
+    }
     
-    console.log(`Session secret: ${newSecret.substring(0, 8)}...${newSecret.substring(newSecret.length - 8)}`);
+    fs.writeFileSync(envPath, envContent, 'utf8');
     
-    return true;} catch (error) {
+    console.log(`Streeam Me Devloper Bloggers.web.id - Session secret: ${newSecret.substring(0, 8)}...${newSecret.substring(newSecret.length - 8)}`);
+    
+    return true;
+  } catch (error) {
     console.error('Error updating session secret:', error.message);
     return false;
   }
