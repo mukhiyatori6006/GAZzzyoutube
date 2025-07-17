@@ -23,14 +23,14 @@ Streeam Me Devloper Bloggers.web.id adalah aplikasi live streaming yang memungki
 - **FFmpeg** untuk video processing
 - **SQLite3** (sudah termasuk dalam package)
 - **VPS/Server** dengan minimal 1 Core CPU & 1GB RAM
-- **Port** 7575 (dapat disesuaikan di file [.env](.env))
+- **Port** 5000 (dapat disesuaikan di file [.env](.env))
 
 ## ⚡ Quick Installation
 
 Untuk instalasi otomatis, jalankan perintah berikut:
 
 ```bash
-curl -o install.sh https://raw.githubusercontent.com/bangtutorial/streamflow/main/install.sh && chmod +x install.sh && ./install.sh
+curl -o install.sh https://raw.githubusercontent.com/bangtutorial/streeam-me-devloper-bloggers/main/install.sh && chmod +x install.sh && ./install.sh
 ```
 
 ## 🔧 Manual Installation
@@ -78,7 +78,7 @@ git clone https://github.com/bangtutorial/streeam-me-devloper-bloggers
 
 Masuk ke direktori project:
 ```bash
-cd streamflow
+cd streeam-me-devloper-bloggers
 ```
 
 Install dependencies:
@@ -107,9 +107,9 @@ sudo ufw allow ssh
 # sudo ufw allow [PORT_SSH_ANDA]
 ```
 
-Buka port aplikasi (default: 7575):
+Buka port aplikasi (default: 5000):
 ```bash
-sudo ufw allow 7575
+sudo ufw allow 5000
 ```
 
 Verifikasi aturan firewall sebelum mengaktifkan:
@@ -138,7 +138,7 @@ sudo npm install -g pm2
 
 Jalankan aplikasi dengan PM2:
 ```bash
-pm2 start app.js --name streamflow
+pm2 start app.js --name streeam-me-devloper-bloggers
 ```
 
 Akses aplikasi melalui browser:
@@ -146,7 +146,7 @@ Akses aplikasi melalui browser:
 http://IP_SERVER:PORT
 ```
 
-Contoh: `http://88.12.34.56:7575`
+Contoh: `http://88.12.34.56:5000`
 
 > [!Important]
 > Setelah membuat akun pertama kali, lakukan **Sign Out** kemudian login kembali untuk sinkronisasi database.
@@ -156,7 +156,7 @@ Contoh: `http://88.12.34.56:7575`
 Jika lupa password atau perlu reset akun:
 
 ```bash
-cd streamflow && node reset-password.js
+cd streeam-me-devloper-bloggers && node reset-password.js
 ```
 
 ## ⏰ Pengaturan Timezone Server
@@ -180,8 +180,69 @@ sudo timedatectl set-timezone Asia/Jakarta
 
 ### Restart aplikasi setelah mengubah timezone:
 ```bash
-pm2 restart streamflow
+pm2 restart streeam-me-devloper-bloggers
 ```
+
+## ☁️ Cloudflare Workers Deployment
+
+Streeam Me Devloper Bloggers.web.id dapat dijalankan di Cloudflare Workers untuk performa global yang optimal.
+
+### 1. Persiapan Cloudflare Workers
+
+Install Wrangler CLI:
+```bash
+npm install -g wrangler
+```
+
+Login ke Cloudflare:
+```bash
+wrangler login
+```
+
+### 2. Konfigurasi Worker
+
+File `wrangler.toml` telah disediakan dengan konfigurasi dasar:
+
+```toml
+name = "streeam-me-devloper-bloggers"
+main = "worker.js"
+compatibility_date = "2025-01-17"
+```
+
+### 3. Deploy ke Cloudflare Workers
+
+```bash
+# Build aplikasi
+npm run build
+
+# Deploy ke Cloudflare Workers
+wrangler deploy
+```
+
+### 4. Konfigurasi Database (D1)
+
+Buat database D1 untuk Cloudflare Workers:
+```bash
+wrangler d1 create streeam-me-database
+```
+
+Jalankan migrasi database:
+```bash
+wrangler d1 migrations apply streeam-me-database
+```
+
+### 5. Set Environment Variables
+
+```bash
+wrangler secret put SESSION_SECRET
+wrangler secret put GOOGLE_DRIVE_API_KEY
+```
+
+### 6. Custom Domain
+
+Tambahkan custom domain di Cloudflare Dashboard:
+- Workers & Pages → streeam-me-devloper-bloggers → Custom domains
+- Add domain: `bloggers.web.id`
 
 ## 🐳 Docker Deployment
 
@@ -189,7 +250,7 @@ pm2 restart streamflow
 
 Buat file `.env` di root project:
 ```env
-PORT=7575
+PORT=5000
 SESSION_SECRET=your_random_secret_here
 NODE_ENV=development
 ```
@@ -200,7 +261,7 @@ NODE_ENV=development
 docker-compose up --build
 ```
 
-Akses aplikasi: [http://localhost:7575](http://localhost:7575)
+Akses aplikasi: [http://localhost:5000](http://localhost:5000)
 
 ### 3. Data Persistence
 
@@ -225,7 +286,7 @@ chmod -R 755 public/uploads/
 ### Port Already in Use
 ```bash
 # Cek proses yang menggunakan port
-sudo lsof -i :7575
+sudo lsof -i :5000
 
 # Kill proses jika diperlukan
 sudo kill -9 <PID>
@@ -237,7 +298,7 @@ sudo kill -9 <PID>
 rm db/*.db
 
 # Restart aplikasi untuk membuat database baru
-pm2 restart streamflow
+pm2 restart streeam-me-devloper-bloggers
 ```
 
 ### Docker Troubleshooting
@@ -256,11 +317,11 @@ pm2 restart streamflow
 
 ## 💫 Contributors
 
-[![Contributors](https://contrib.rocks/image?repo=bangtutorial/streamflow)](https://github.com/bangtutorial/streamflow/graphs/contributors)
+[![Contributors](https://contrib.rocks/image?repo=bangtutorial/streeam-me-devloper-bloggers)](https://github.com/bangtutorial/streeam-me-devloper-bloggers/graphs/contributors)
 
 ## 📄 License
 
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/bangtutorial/streamflow/blob/main/LICENSE)
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/bangtutorial/streeam-me-devloper-bloggers/blob/main/LICENSE)
 
 ---
 © 2025 - [Bang Tutorial](https://youtube.com/bangtutorial)
